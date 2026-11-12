@@ -1,1 +1,373 @@
-/* место для вашего кода */
+css
+.cover {
+  background-color: #333;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+    }
+    
+.cover__title {
+  font-size: 96px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.cover__btn {
+  
+  color: white;              /* Белый текст */
+  padding: 7px 15px;        /* Внутренние отступы */
+  border: none;              /* Убираем стандартную рамку браузера */
+  cursor: pointer;           /* Курсор в виде руки при наведении */
+  font-size: 18px;
+
+  position: absolute;       /* Вырываем кнопку из потока */
+  bottom: 15px;              /* Отступ снизу (сделай чуть больше, чем у фразы) */
+  right: 60px;               /* Отступ справа (чтобы прижать к правому краю) */
+  
+  z-index: 4; 
+  
+background-color: transparent; /* Делаем фон полностью прозрачным */
+  border: 2px solid white;       /* Добавляем белую рамку (толщину и цвет можно менять) */
+  color: white;
+  
+}
+
+.address {
+  /* Сброс браузерных стилей */
+  font-style: normal;
+  margin: 0;
+  
+  /* Позиционирование в Grid */
+  max-width: 190px; /* Значение из макета */
+  justify-self: end;
+}
+
+.site-header {
+  display: grid;
+  /* Левая колонка (меню) | Центр (лого) | Правая колонка (адрес) */
+  grid-template-columns: 1fr auto 1fr; 
+  align-items: center; /* Выравнивание по вертикали по центру */
+  padding: 15px 20px;
+  gap: 20px;
+}
+
+/* Чтобы адрес был в правой колонке и прижат вправо */
+.site-header address {
+  justify-self: end; /* Прижимает к правому краю своей ячейки */
+  text-align: right; /* Текст внутри тоже по правому краю */
+  font-style: normal; /* Убираем курсив */
+  font-size: 14px;
+}
+
+.logo img {
+  width: 150px;       /* Задай комфортную ширину */
+  height: auto;       /* Высота подстроится автоматически, пропорции не исказятся */
+  display: block;     /* Убирает странные отступы снизу, которые бывают у картинок */
+} 
+
+body {
+ margin: 0;
+ min-height: 100vh;
+}
+ 
+.hero-banner img {
+  width: 100%;       /* Растягиваем на всю ширину контейнера (который ограничен 1200px в body) */
+  height: auto;      /* Сохраняем пропорции */
+  display: block;    /* Убираем лишний отступ снизу */
+}
+
+/* 1. Контейнер (родитель) */
+.hero-banner {
+  position: relative; /* Ключевое правило! Теперь все "absolute" внутри будут считаться от этого блока */
+  overflow: hidden;   /* Если картинка вылезет за края, она обрежется (полезно для адаптивности) */
+  width: 100%;        /* Растягиваем на всю ширину (с учётом max-width body) */
+}
+
+/* 2. Картинка */
+.hero-banner img {
+  width: 100%;
+  height: auto;
+  display: block;     /* Убирает лишние отступы снизу у картинки */
+  /* Картинка просто лежит внизу, как фон */
+}
+
+.banner-content {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 50%;
+  height: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Сдвигаем сам блок назад на 50% его размера */
+  width: 100%; /* Важно: чтобы слова не терялись за пределами блока */
+}
+
+/* 2. Общие стили для всех слов */
+.word {
+  position: absolute; /* Ключевое свойство! Теперь слова не зависят друг от друга */
+  color: white;
+  font-size: 135px;
+  font-weight: bold;
+  text-transform: uppercase;
+  white-space: nowrap; /* Запрещаем слову разбиваться на две строки */
+  display: block;
+  
+  /* Точка отсчета для всех слов — это левый верхний угол (.banner-content) */
+  top: 0; 
+  left: 0;
+}
+
+/* 3. Двигаем ПЕРВОЕ слово (оно стоит на месте, как якорь) */
+.w1 {
+    top: 80px;
+    left: 50px;
+}
+
+/* 4. Двигаем ВТОРОЕ слово (вниз и вправо) */
+.w2 {
+  top:230px;   /* Сдвигаем вниз на 30 пикселей */
+  left: 350px;  /* Сдвигаем вправо на 40 пикселей */
+}
+
+/* 5. Двигаем ТРЕТЬЕ слово (еще ниже и еще правее) */
+.w3 {
+  top: 380px;   /* Считаем: 30px (предыдущее) + 35px (новый шаг вниз) */
+  left: 650px;  /* Считаем: 40px (предыдущее) + 45px (новый шаг вправо) */
+} 
+
+/* Стили для новой фразы */
+.banner-subtitle {
+  position: absolute; /* Вырываем из потока, чтобы двигать вручную */
+  
+  /* Координаты: ставим ниже и по центру */
+  top: 560px;         /* <-- МЕНЯЙ ЭТО ЧИСЛО, чтобы опустить выше/ниже */
+  left: 45%;          /* Ставим на середину по горизонтали */
+  
+  /* Центрируем саму фразу (так как left=50%, нужно подтянуть её назад) */
+  transform: translateX(-50%); 
+  
+  /* Оформление */
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap; /* Чтобы фраза не разрывалась на две строки */
+  
+  z-index: 3; /* Чуть выше лесенки, если вдруг они пересекутся (хотя лесенка выше по коду) */
+}
+
+/* Лоты */
+
+.catalog {
+  width: 100%;
+  padding: 0 20px;   /* Отступы от краёв, если экран станет меньше 1200px */
+  box-sizing: border-box;
+  padding-top: 50px;
+  margin-bottom: 50px;
+}
+
+.catalog__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: start; /* Карточки начинают выравниваться сверху, а не растягиваются */
+}
+
+.catalog__item {
+  display: flex; /* Позволяет ссылке заполнить всю ячейку */
+}
+
+.catalog__link {
+  text-decoration: none;
+  color: inherit;
+  width: 100%; /* Важно для растягивания */
+  display: block;
+}
+
+
+/* 1. Карточка: точка отсчета для текста */
+.card {
+  position: relative;
+  overflow: hidden; /* Срезает лишнее и сохраняет скругление */
+  border-radius: 8px;
+}
+
+/* 2. Картинка */
+.card__image {
+  width: 100%;
+  height: 450px; /* Выравниваем высоту всех карточек */
+  object-fit: cover;
+  display: block;
+}
+
+.card__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+  /* Текст растянется на всю картинку, так как мы задали 4 координаты */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 150px;
+  
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.card__title {
+  /* Убираем все стандартные отступы браузера */
+  margin: 0;
+  
+  /* Теперь задаем единственный нужный нам отступ снизу */
+  margin-bottom: 0px; /* Увеличивай это число, чтобы раздвинуть заголовок и текст */
+  
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card__price {
+  margin: 0;
+  padding-top: 0px;
+  padding-bottom: 0x;
+}
+
+.container-1,
+.container-2 {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.text-group {
+
+  display: block;
+}
+
+
+.text-group .text-col:last-child {
+  margin-top: 50px; 
+}
+
+.column__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.columns-wrapper {
+  display: grid;
+  /* Делим контейнер ровно пополам */
+  grid-template-columns: 33% 1fr; 
+  gap: 40px; /* Расстояние между картинкой и текстом */
+  
+  /* Важно: ограничение ширины, чтобы текст не растягивался на весь экран (F100%) */
+  max-width: 1200px;
+  margin: 0 auto; /* Центрируем блок на странице */
+  padding: 40px 20px;
+}
+
+.column__title {
+  /* ... твои текущие стили (шрифт, вес и т.д.) ... */
+  
+  margin-bottom: 40px; /* Увеличивай это число, чтобы раздвинуть текст и заголовок */
+  font-size: 40px;
+}
+
+
+/* 1. Главный контейнер футера */
+.site-footer {
+  display: grid;
+  /* 3 колонки: одна слева, одна по центру, одна справа */
+  grid-template-columns: 1fr auto 1fr; 
+  gap: 20px;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center; /* Выравниваем по вертикали по центру */
+}
+
+/* 3. Соцсети: Ставим в 3-ю (правую) колонку, прижимаем вправо */
+.footer-socials {
+  grid-column: 3;
+  justify-self: end; /* Прижимает список к правому краю ячейки */
+  
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 15px;
+}
+
+/* 2. Меню: Ставим в 2-ю (центральную) колонку, прижимаем по центру */
+.footer-menu {
+  grid-column: 2;
+  justify-self: center;
+  
+  /* Внутри меню ссылки тоже должны быть в ряд */
+  display: flex;
+  gap: 20px;
+}
+
+.footer-menu ul {
+  display: flex; /* Ошибка в твоих стилях: flex, а не flex */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+}
+
+.footer-menu a, .footer-socials a, .footer-address a {
+  text-decoration: none;
+  color: black;
+}
+
+/* 1. Адрес: Ставим в 1-ю колонку, прижимаем влево */
+.footer-address {
+  grid-column: 1;
+  justify-self: start;
+  font-style: normal;
+  text-align: left;
+}
+
+.footer-address a {
+  display: block; /* Если нужно, чтобы контакты были списком столбиком */
+}
+
+.footer__icon {
+  width: 60px;
+  height: 60px;
+  display: block;
+}
+
+.circle {
+  width: 200px;  /* Размер круга */
+  height: 200px; /* Равен ширине для круга */
+  border-radius: 100%;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0; /* Чтобы круг не сжимался */
+}
+
+.logo {
+  width: 120px; /* Размер логотипа внутри */
+  height: 120px;
+  object-fit: contain;
+}
+
+.show-more-link {
+  display: block; /* или inline-block */
+  margin-top: 30px; /* отступ от лотов */
+}
