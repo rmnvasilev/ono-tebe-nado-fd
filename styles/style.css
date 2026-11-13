@@ -23,7 +23,7 @@ css
   position: absolute;
   bottom: 15px;
   right: 60px;
-  z-index: 4; 
+  z-index: 4;
   background-color: transparent;
   border: 2px solid white;
   color: white;
@@ -39,7 +39,7 @@ css
 
 .site-header {
   display: grid;
-  grid-template-columns: 1fr auto 1fr; 
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   padding: 15px 20px;
   gap: 20px;
@@ -97,7 +97,7 @@ body {
   text-transform: uppercase;
   white-space: nowrap;
   display: block;
-  top: 0; 
+  top: 0;
   left: 0;
 }
 
@@ -219,11 +219,12 @@ body {
   padding-bottom: 0x;
 }
 
-.container-1,
-.container-2 {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+.container {
+  width: 100%;
+  max-width: 1200px;       /* Ключевое: фиксируем максимальную ширину */
+  margin: 0 auto;          /* Центрируем на странице */
+  padding: 0 16px;         /* Небольшие боковые отступы для мобильных */
+  box-sizing: border-box;  /* Чтобы padding не увеличивал общую ширину */
 }
 
 .text-group {
@@ -246,7 +247,7 @@ body {
 .columns-wrapper {
   display: grid;
   /* Делим контейнер ровно пополам */
-  grid-template-columns: 33% 1fr; 
+  grid-template-columns: 33% 1fr;
   gap: 40px; /* Расстояние между картинкой и текстом */
   
   /* Важно: ограничение ширины, чтобы текст не растягивался на весь экран (F100%) */
@@ -264,7 +265,7 @@ body {
 
 .site-footer {
   display: grid;
-  grid-template-columns: 1fr auto 1fr; 
+  grid-template-columns: 1fr auto 1fr;
   gap: 20px;
   padding: 40px 20px;
   max-width: 1200px;
