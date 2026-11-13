@@ -17,39 +17,30 @@ css
 
 .cover__btn {
   
-  color: white;              /* Белый текст */
-  padding: 7px 15px;        /* Внутренние отступы */
-  border: none;              /* Убираем стандартную рамку браузера */
-  cursor: pointer;           /* Курсор в виде руки при наведении */
+  padding: 7px 15px;
+  cursor: pointer;
   font-size: 18px;
-
-  position: absolute;       /* Вырываем кнопку из потока */
-  bottom: 15px;              /* Отступ снизу (сделай чуть больше, чем у фразы) */
-  right: 60px;               /* Отступ справа (чтобы прижать к правому краю) */
-  
+  position: absolute;
+  bottom: 15px;
+  right: 60px;
   z-index: 4; 
-  
-background-color: transparent; /* Делаем фон полностью прозрачным */
-  border: 2px solid white;       /* Добавляем белую рамку (толщину и цвет можно менять) */
+  background-color: transparent;
+  border: 2px solid white;
   color: white;
-  
 }
 
 .address {
-  /* Сброс браузерных стилей */
+
   font-style: normal;
   margin: 0;
-  
-  /* Позиционирование в Grid */
-  max-width: 190px; /* Значение из макета */
+  max-width: 190px;
   justify-self: end;
 }
 
 .site-header {
   display: grid;
-  /* Левая колонка (меню) | Центр (лого) | Правая колонка (адрес) */
   grid-template-columns: 1fr auto 1fr; 
-  align-items: center; /* Выравнивание по вертикали по центру */
+  align-items: center;
   padding: 15px 20px;
   gap: 20px;
 }
@@ -71,12 +62,6 @@ background-color: transparent; /* Делаем фон полностью про�
 body {
  margin: 0;
  min-height: 100vh;
-}
- 
-.hero-banner img {
-  width: 100%;       /* Растягиваем на всю ширину контейнера (который ограничен 1200px в body) */
-  height: auto;      /* Сохраняем пропорции */
-  display: block;    /* Убираем лишний отступ снизу */
 }
 
 /* 1. Контейнер (родитель) */
@@ -104,40 +89,33 @@ body {
   width: 100%; /* Важно: чтобы слова не терялись за пределами блока */
 }
 
-/* 2. Общие стили для всех слов */
 .word {
-  position: absolute; /* Ключевое свойство! Теперь слова не зависят друг от друга */
+  position: absolute;
   color: white;
   font-size: 135px;
   font-weight: bold;
   text-transform: uppercase;
-  white-space: nowrap; /* Запрещаем слову разбиваться на две строки */
+  white-space: nowrap;
   display: block;
-  
-  /* Точка отсчета для всех слов — это левый верхний угол (.banner-content) */
   top: 0; 
   left: 0;
 }
 
-/* 3. Двигаем ПЕРВОЕ слово (оно стоит на месте, как якорь) */
 .w1 {
     top: 80px;
     left: 50px;
 }
 
-/* 4. Двигаем ВТОРОЕ слово (вниз и вправо) */
 .w2 {
-  top:230px;   /* Сдвигаем вниз на 30 пикселей */
-  left: 350px;  /* Сдвигаем вправо на 40 пикселей */
+  top:230px;
+  left: 350px;
 }
 
-/* 5. Двигаем ТРЕТЬЕ слово (еще ниже и еще правее) */
 .w3 {
-  top: 380px;   /* Считаем: 30px (предыдущее) + 35px (новый шаг вниз) */
-  left: 650px;  /* Считаем: 40px (предыдущее) + 45px (новый шаг вправо) */
+  top: 380px;
+  left: 650px;
 } 
 
-/* Стили для новой фразы */
 .banner-subtitle {
   position: absolute; /* Вырываем из потока, чтобы двигать вручную */
   
@@ -255,7 +233,7 @@ body {
 
 
 .text-group .text-col:last-child {
-  margin-top: 50px; 
+  margin-top: 50px;
 }
 
 .column__image {
@@ -284,11 +262,8 @@ body {
   font-size: 40px;
 }
 
-
-/* 1. Главный контейнер футера */
 .site-footer {
   display: grid;
-  /* 3 колонки: одна слева, одна по центру, одна справа */
   grid-template-columns: 1fr auto 1fr; 
   gap: 20px;
   padding: 40px 20px;
@@ -297,11 +272,9 @@ body {
   align-items: center; /* Выравниваем по вертикали по центру */
 }
 
-/* 3. Соцсети: Ставим в 3-ю (правую) колонку, прижимаем вправо */
 .footer-socials {
   grid-column: 3;
-  justify-self: end; /* Прижимает список к правому краю ячейки */
-  
+  justify-self: end;
   display: flex;
   list-style: none;
   padding: 0;
@@ -309,12 +282,9 @@ body {
   gap: 15px;
 }
 
-/* 2. Меню: Ставим в 2-ю (центральную) колонку, прижимаем по центру */
 .footer-menu {
   grid-column: 2;
   justify-self: center;
-  
-  /* Внутри меню ссылки тоже должны быть в ряд */
   display: flex;
   gap: 20px;
 }
